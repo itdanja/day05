@@ -1,0 +1,52 @@
+
+buildscript {
+    ext {
+        springBootVersion = '2.1.9.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.jojoldu.book'
+version '1.0.4-SNAPSHOT-'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+    // 플러그인에서 룸북 설치후 => 디펜더시 추가
+    compile('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+
+    // JPA 이용한 DB 접근 CRUD [ 생성,읽기,변경,삭제 ]
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    // h2: 관계형데이터베이스  : 별도의 설치 없이 데이터베이스 관리 가능
+    compile('com.h2database:h2')
+
+    // 머스테치 : HTML 제공 해주는 기능 [ 무료버전 ]
+    compile('org.springframework.boot:spring-boot-starter-mustache')
+
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+
+    compile('org.springframework.session:spring-session-jdbc')
+
+
+
+}
